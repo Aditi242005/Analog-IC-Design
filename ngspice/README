@@ -1,0 +1,5 @@
+TITLE: RC Step input testbench
+
+.PARAM vdd_var=1
+
+** 
