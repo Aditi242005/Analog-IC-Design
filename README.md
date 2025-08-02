@@ -2,8 +2,6 @@
 
 This repository documents various aspects of analog integrated circuit (IC) design with examples, circuit images, simulations, and system-level analysis. It is structured for quick understanding and reference for students and enthusiasts in electronics and communication.
 
-# Analog-IC-Design
-
 🛠️ Software Used Xschem Ngspice Siliwiz Git & GitHub
 
 📑 Table of Contents USB Microphone System Analysis High-Pass Filter Circuit Siliwiz Simulation Current Mirror FET Characterization NFET Characterization
