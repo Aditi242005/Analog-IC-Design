@@ -1,59 +1,76 @@
-# Analog IC Design 
+# Analog-IC Design 
+This repository documents my summer-internship project of Analog Integrated-Circuit Design under the mentorship of **Dr. Saroj Rout** in Silicon University, conducted in June,2025 . 
+ 
+# **USB Microphone System**  
+  
+<img width="1280" height="666" alt="image" src="https://github.com/user-attachments/assets/c14fc0df-1173-4adb-9ff0-ae5f2e886b30" />
 
-This repository documents various aspects of analog integrated circuit (IC) design with examples, circuit images, simulations, and system-level analysis. It is structured for quick understanding and reference for students and enthusiasts in electronics and communication.
-
-🛠️ Software Used Xschem Ngspice Siliwiz Git & GitHub
-
-📑 Table of Contents USB Microphone System Analysis High-Pass Filter Circuit Siliwiz Simulation Current Mirror FET Characterization NFET Characterization
-
-1.USB Microphone System Analysis This section explains the analog front-end of a U
-<img width="1280" height="666" alt="17541334996366662409608514710219" src="https://github.com/user-attachments/assets/f6defd05-3786-4b0e-a1df-9a71332aa963" />
-
-🔧 System Overview MEMS Microphone (SPH8878LR5H-1): Captures sound and outputs an analog voltage signal Op-Amp (OPA344): Amplifies & filters ADC + USB Output: Digitizes and sends to PC 🎧 This design enables real-time USB-MIDI output via analog signal conditioning.
-
-🎛️ Thevenin Equivalent Model of the Microphone To understand the microphone as a signal source, it can be modeled with its Thevenin equivalent:
-
-This model helps in:
+**USB Microphone Teardown**
+  
+<img width="1280" height="557" alt="image" src="https://github.com/user-attachments/assets/892a23a7-fee2-4049-8692-ac9c50cdeb39" />
 
 
-Analyzing signal strength and loading Impedance matching for the amplifier input Ensuring minimal signal loss at the interface
-<img width="1423" height="788" alt="17541336503743020520961760886418" src="https://github.com/user-attachments/assets/a72b88df-f62b-4068-aae1-750dc20fcc94" />
+* [MEMS Capacitive Microphone Datasheet](https://cdn.sparkfun.com/assets/0/5/8/b/1/SPH8878LR5H-1_Lovato_DS.pdf) 
 
-📈 Output Response of the Microphone Circuit The simulation below shows the voltage output (vout) across the load, after signal amplification and filtering.
+* [OPA344 OpAmp Datasheet](https://www.ti.com/lit/ds/symlink/opa345.pdf)
+ 
+# **THEVENIN MODEL of MICROPHONE** 
+  
+ **Key Components:**
+* Vnmic (AC Source): Represents the small signal output of the MEMS microphone due to sound pressure.
+* R1 (Series Resistor): Models the internal resistance of the microphone (Thevenin resistance).
+* C1, C3 (Coupling Capacitors): Block DC and pass the AC audio signal.
+* E1 (Buffer Stage): A voltage-controlled voltage source (VCVS) providing impedance isolation.
+* V2 (Bias Voltage): Sets the common-mode voltage (Vcm) at 1.5V for AC analysis.
+* R3 (Load Resistor): Represents the input resistance of the subsequent amplifier stage.
+<img width="1586" height="820" alt="image" src="https://github.com/user-attachments/assets/6a1f5100-e6ce-44df-8246-a89fa83337c2" />
 
-Mic Output Plot
+- Sensitivty: -44 dBV/Pa
+- Condition: 94 dB SPL at 1 kHz which is sound pressure of 1 Pa
+- Normal voice conversation is typically 60 dB SPL
+- **Vth Calculation**
+  - Voice (Pa) = $10^{(60-94)/20} = 19.9\times 10^{-3} Pa$
+  - Output (Vpk) = $\sqrt{2}\times V_{rms} = \sqrt{2}\times 19.9\times 10^{-3} Pa \times 10^{-44/20} = 178 \mu Vpk$
+  - **$V_{out-pk} = 0.178~ mV$**
+- **Rth** (from datasheet) = 380 ohms
+  
+  # **Microphone AFE Analysis**  
+  <img width="2159" height="2289" alt="image" src="https://github.com/user-attachments/assets/90932328-a7a9-445a-b290-16c8e438a8f3" />
+  
+  # **THEVENIN EQUIVALENT using OP-AMP**
+  
+  <img width="1905" height="946" alt="image" src="https://github.com/user-attachments/assets/989b4d25-a221-4a3b-9a05-32e5d3c783f4" />
 
-<img width="1415" height="708" alt="17541338007582985230850898395336" src="https://github.com/user-attachments/assets/24703462-a5e4-4f9f-8efc-16250bca0669" />
+  # **OP-AMP**
 
-🧪 This waveform helps verify if the designed circuit properly amplifies the mic signal within expected voltage ranges.
-📈 Frequency Response The frequency response reveals the bandwidth and filtering effects of the analog stage. Mic Frequency Response
-<img width="1600" height="659" alt="17541339363112573970792081371457" src="https://github.com/user-attachments/assets/c5d319c7-6edd-465c-88c7-4355d2beccd4" />
+  **Schematic of OP-AMP Model**
+  
+  <img width="1848" height="872" alt="image" src="https://github.com/user-attachments/assets/4ddc74f0-dbf9-41d5-ae7f-c6189bc38170" />
 
-🔁 Simulink Output The Simulink simulation confirms system-level behavior and time-domain signal dynamics.
+  **Symbol of OP-AMP Model**
+   
+  <img width="763" height="577" alt="image" src="https://github.com/user-attachments/assets/a95bce58-e681-4acf-b04c-d08974cbb2a6" />
+
+  # **Simple RC High Pass Filter**
+
+  <img width="1918" height="1025" alt="image" src="https://github.com/user-attachments/assets/67c61d51-037f-4590-af84-3f8726bac802" />
+
+  # **Current Mirror Circuit**
+
+  <img width="1693" height="880" alt="image" src="https://github.com/user-attachments/assets/a384071a-04d7-4f84-9009-f29cd2ed5e47" />
+
+  # **Small Signal Analysis**
+
+  <img width="1896" height="876" alt="image" src="https://github.com/user-attachments/assets/9489121c-cd04-40e9-8bb6-59d94c45e5d0" />
+
+  # **Waveform of MEMS Microphone**
+
+  ![WhatsApp Image 2025-08-02 at 11 55 25 PM](https://github.com/user-attachments/assets/b197f9b0-6812-4623-bc91-69bc833e06a6)
 
 
-<img width="488" height="347" alt="17541339768447874726652061198943" src="https://github.com/user-attachments/assets/d2421dc4-24e7-44fa-b802-2458a7e777de" />
-Op-Amp Modeling as a Single Pole System To better analyze the frequency response of the analog front-end, the operational amplifier is modeled using a single-pole transfer function. This provides insight into the bandwidth limitations and phase behavior of the amplifier.
 
-<img width="1606" height="780" alt="17541340267653163556912031508042" src="https://github.com/user-attachments/assets/01fd4937-5cbb-405a-9183-ccf9b9b50266" />
-Simulink Output The Simulink simulation confirms system-level behavior and time-domain signal dynamics
-<img width="493" height="350" alt="17541340820537888488141046283879" src="https://github.com/user-attachments/assets/a6849eb5-548c-4635-a612-c4ffaebdc3b3" />
+  
 
-4.Current Mirror The circuit is used to copy the flow of current in one active device and controlling the flow of current in another device by maintaining the output current stable instead of loading
 
-<img width="931" height="394" alt="17541341302786444765067748737231" src="https://github.com/user-attachments/assets/4b1750d3-c9d0-4710-8fba-8b3c5bf478eb" />
-high-Pass Filter Circuit This section explains the working and transfer function of a high-pass filter using an op-amp.
-<img width="1080" height="630" alt="17541342189867360962650669943510" src="https://github.com/user-attachments/assets/231cd888-9615-4b45-91a7-03911f5ebeaf" />
 
-High-Pass Filter Circuit 🧰 Circuit Overview Input Capacitor C_i = 4.7μF: Blocks DC Resistors R_i = R_f = 5kΩ: Define gain and cutoff Op-Amp in non-inverting configuration 🧮 S-Domain Transfer Function H(s) = (Rf * s * Ci) / (1 + s * Ri * Ci)
 
-At low frequencies → H(s) → 0 (attenuates low freq) At high frequencies → H(s) → 1 (passes high freq) 🔻 Cutoff Frequency (fc) fc = 1 / (2πRiCi) ≈ 6.77 Hz For Ri = 5kΩ, Ci = 4.7μF
-
-🖼️ Op-Amp Schematic Diagram Detailed internal schematic of the operational amplifier:
-<img width="941" height="451" alt="17541342537727379113535766509858" src="https://github.com/user-attachments/assets/0e3621b4-7454-49d8-ac7a-330c1a0153fe" />
-Op-Amp Symbolic Diagram Standard symbolic representation of an operational amplifier:
-<img width="1015" height="667" alt="17541342945323191885007027604472" src="https://github.com/user-attachments/assets/d7138a84-fdae-4479-a000-e4738809d2a3" />
-Opamp Symbol 📐 High-Pass Filter Circuit Using the Op-Amp High-pass filter circuit built using the op-amp symbol shown above: High-Pass Circuit:
-<img width="791" height="621" alt="17541343368786039256259874541404" src="https://github.com/user-attachments/assets/0ed59575-507d-4d9f-a86e-86eeffa15ffd" />
-Frequency Response Plot of the High-Pass Filter The plot below shows the frequency response (gain vs frequency) of the high-pass filter circuit. Frequency Response
-<img width="1411" height="508" alt="17541343683451387451689267107700" src="https://github.com/user-attachments/assets/e7efb54c-2406-4e33-9ec9-8a703ba49966" />
