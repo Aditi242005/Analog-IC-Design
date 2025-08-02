@@ -1,8 +1,0 @@
-mkdir waveform
-cd wavefoprm
-git init
-cp ../original-repo/path/to/image.jpg .
-git add image.jpg
-git commit -m "Images/WhatsApp Image 2025-06-21 at 05.14.09_e52af6ad.jpg"
-git remote add origin https://github.com/your-username/my-image-repo.git
-git push -u origin main
