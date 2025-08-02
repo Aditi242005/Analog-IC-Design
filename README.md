@@ -3,7 +3,6 @@
 This repository documents various aspects of analog integrated circuit (IC) design with examples, circuit images, simulations, and system-level analysis. It is structured for quick understanding and reference for students and enthusiasts in electronics and communication.
 
 # Analog-IC-Design
-Analog IC Design Internship Report Name: Om Dibyajyoti Ray SIC: 23BEEJ16 Branch: Electrical & Electronics Engineering Duration: June 2nd, 2025 – June 20th, 2025 Mentor: Dr. Saroj Rout
 
 🛠️ Software Used Xschem Ngspice Siliwiz Git & GitHub
 
