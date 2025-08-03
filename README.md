@@ -63,10 +63,12 @@ This repository documents my summer-internship project of Analog Integrated-Circ
   <img width="2159" height="2289" alt="image" src="https://github.com/user-attachments/assets/90932328-a7a9-445a-b290-16c8e438a8f3" />
   
   # **THEVENIN EQUIVALENT using OP-AMP**
+  - The Circuit demonstrates a practical application of Analog Design Principle
   
   <img width="1905" height="946" alt="image" src="https://github.com/user-attachments/assets/989b4d25-a221-4a3b-9a05-32e5d3c783f4" />
 
   # **OP-AMP**
+  - An Operational Amplifier, or Op-amp for short, is fundamentally a voltage amplifying device designed to be used with external feedback components such as resistors and capacitors between its output and input terminals.
 
   **Schematic of OP-AMP Model**
   
@@ -81,10 +83,12 @@ This repository documents my summer-internship project of Analog Integrated-Circ
   <img width="1918" height="1025" alt="image" src="https://github.com/user-attachments/assets/67c61d51-037f-4590-af84-3f8726bac802" />
 
   # **Current Mirror Circuit**
+  - The circuit is used to copy the flow of current in one active device and controlling the flow of current in another device by maintaining the output current stable instead of loading .
 
   <img width="1693" height="880" alt="image" src="https://github.com/user-attachments/assets/a384071a-04d7-4f84-9009-f29cd2ed5e47" />
 
   # **Small Signal Analysis**
+  - Devices like BJTs or MOSFETs have non-linearly but when the input signal is small, we can approximate the device as linear around its operating point. This approximation is known as Small Signal Analysis.
 
   <img width="1896" height="876" alt="image" src="https://github.com/user-attachments/assets/9489121c-cd04-40e9-8bb6-59d94c45e5d0" />
 
